@@ -1,6 +1,6 @@
 # =================================
 # DOCKERFILE ULTRA-SIMPLE PARA COOLIFY
-# Template HTML Est?tico
+# Template HTML Est?tico - CORREGIDO
 # =================================
 
 FROM node:18-alpine
@@ -8,7 +8,7 @@ FROM node:18-alpine
 # Informaci?n del maintainer
 LABEL maintainer="xuli70"
 LABEL description="Aplicaci?n de prueba para verificar que todo funciona"
-LABEL version="1.0.0"
+LABEL version="1.0.1"
 
 # Establecer directorio de trabajo
 WORKDIR /app
@@ -19,7 +19,7 @@ RUN apk add --no-cache caddy
 # Copiar todos los archivos de la aplicaci?n
 COPY . .
 
-# Crear Caddyfile optimizado para Coolify
+# Crear Caddyfile optimizado para Coolify - SIN CONFLICTOS DE HEADERS
 RUN echo -e ":${PORT:-8080} {\n\
     # Directorio ra?z\n\
     root * /app\n\
@@ -33,7 +33,7 @@ RUN echo -e ":${PORT:-8080} {\n\
     # Compresi?n autom?tica\n\
     encode gzip\n\
     \n\
-    # Headers de seguridad\n\
+    # Headers unificados (seguridad + CORS)\n\
     header / {\n\
         # Prevenir clickjacking\n\
         X-Frame-Options \"DENY\"\n\
@@ -49,6 +49,11 @@ RUN echo -e ":${PORT:-8080} {\n\
         \n\
         # Content Security Policy b?sica\n\
         Content-Security-Policy \"default-src 'self' 'unsafe-inline' 'unsafe-eval' https: data: blob:; font-src 'self' https: data:; img-src 'self' https: data: blob:;\"\n\
+        \n\
+        # Headers CORS para desarrollo\n\
+        Access-Control-Allow-Origin \"*\"\n\
+        Access-Control-Allow-Methods \"GET, POST, OPTIONS\"\n\
+        Access-Control-Allow-Headers \"Content-Type\"\n\
     }\n\
     \n\
     # Cache para assets est?ticos\n\
@@ -70,13 +75,6 @@ RUN echo -e ":${PORT:-8080} {\n\
         Cache-Control \"public, max-age=604800\"\n\
     }\n\
     \n\
-    # Headers CORS para desarrollo (opcional)\n\
-    header / {\n\
-        Access-Control-Allow-Origin \"*\"\n\
-        Access-Control-Allow-Methods \"GET, POST, OPTIONS\"\n\
-        Access-Control-Allow-Headers \"Content-Type\"\n\
-    }\n\
-    \n\
     # Log de acceso (opcional, para debugging)\n\
     log {\n\
         output stdout\n\
@@ -95,18 +93,8 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
 CMD ["caddy", "run", "--config", "/app/Caddyfile", "--adapter", "caddyfile"]
 
 # =================================
-# NOTAS DE DEPLOYMENT:
-# 
-# 1. Este Dockerfile est? optimizado para Coolify
-# 2. Puerto 8080 es OBLIGATORIO para Coolify
-# 3. Caddy maneja HTTPS autom?ticamente en Coolify
-# 4. Health check incluido para monitoring
-# 5. Headers de seguridad configurados
-# 6. Compresi?n gzip autom?tica
-# 7. Cache optimizado para performance
-# 
-# Para usar en Coolify:
-# - Build Pack: Dockerfile
-# - Port: 8080 (autom?tico)
-# - Health Check: / (autom?tico)
+# CHANGELOG:
+# v1.0.1 - CORREGIDO: Eliminado conflicto de headers duplicados
+# - Unificado header / para seguridad y CORS
+# - Eliminado segundo bloque header / que causaba error
 # =================================
