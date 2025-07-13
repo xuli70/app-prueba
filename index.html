@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mi-app-prueba</title>
+    
+    <!-- Meta tags SEO -->
+    <meta name="description" content="Aplicaci?n de prueba para verificar que todo funciona">
+    <meta name="keywords" content="coolify, vps, deployment, html, tailwindcss">
+    <meta name="author" content="xuli70">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="App Base Coolify">
+    <meta property="og:description" content="Template base para aplicaciones deployadas en Coolify">
+    <meta property="og:type" content="website">
+    
+    <!-- TailwindCSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <!-- Theme color for mobile browsers -->
+    <meta name="theme-color" content="#3B82F6">
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-sm">AB</span>
+                    </div>
+                    <h1 class="text-xl font-semibold text-gray-900">App Base</h1>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <button id="theme-toggle" class="p-2 rounded-md hover:bg-gray-100 transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Hero Section -->
+        <section class="text-center mb-12">
+            <div class="bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-2xl p-8 mb-8">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">
+                    ? App Base Coolify
+                </h1>
+                <p class="text-xl md:text-2xl opacity-90 mb-6">
+                    Template base optimizado para deployment en Coolify
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                        Comenzar Proyecto
+                    </button>
+                    <button class="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors">
+                        Ver Documentaci?n
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Grid -->
+        <section class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            <div class="bg-white p-6 rounded-xl shadow-sm border hover:shadow-md transition-shadow">
+                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                    <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-lg font-semibold mb-2">Deploy R?pido</h3>
+                <p class="text-gray-600">Configuraci?n optimizada para Coolify con dockerfile ultra-simple y confiable.</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm border hover:shadow-md transition-shadow">
+                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                    <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4"></path>
+                    </svg>
+                </div>
+                <h3 class="text-lg font-semibold mb-2">Multi-Template</h3>
+                <p class="text-gray-600">HTML est?tico, TailwindCSS o React. Elige seg?n las necesidades del proyecto.</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm border hover:shadow-md transition-shadow">
+                <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                    <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-lg font-semibold mb-2">PWA Ready</h3>
+                <p class="text-gray-600">Manifest, service worker y configuraci?n lista para Progressive Web Apps.</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm border hover:shadow-md transition-shadow">
+                <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
+                    <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-lg font-semibold mb-2">Seguridad</h3>
+                <p class="text-gray-600">Headers de seguridad, HTTPS autom?tico y configuraci?n defensiva incluida.</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm border hover:shadow-md transition-shadow">
+                <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                    <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-lg font-semibold mb-2">CI/CD</h3>
+                <p class="text-gray-600">GitHub Actions configurado para deployment autom?tico en cada push.</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm border hover:shadow-md transition-shadow">
+                <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
+                    <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                    </svg>
+                </div>
+                <h3 class="text-lg font-semibold mb-2">Developer UX</h3>
+                <p class="text-gray-600">Scripts de automatizaci?n, documentaci?n completa y experiencia optimizada.</p>
+            </div>
+        </section>
+
+        <!-- Status Section -->
+        <section class="bg-white rounded-xl p-6 shadow-sm border mb-8">
+            <h2 class="text-2xl font-bold mb-6 text-center">Estado del Sistema</h2>
+            <div class="grid md:grid-cols-3 gap-4">
+                <div class="text-center">
+                    <div class="w-16 h-16 mx-auto bg-green-100 rounded-full flex items-center justify-center mb-3">
+                        <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                    </div>
+                    <h3 class="font-semibold text-green-600">Deploy Status</h3>
+                    <p class="text-gray-600 text-sm">? Activo y funcionando</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 mx-auto bg-blue-100 rounded-full flex items-center justify-center mb-3">
+                        <span class="text-blue-600 font-bold" id="timestamp">--:--</span>
+                    </div>
+                    <h3 class="font-semibold text-blue-600">Hora Actual</h3>
+                    <p class="text-gray-600 text-sm">Servidor en l?nea</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 mx-auto bg-purple-100 rounded-full flex items-center justify-center mb-3">
+                        <span class="text-purple-600 font-bold">v1.0</span>
+                    </div>
+                    <h3 class="font-semibold text-purple-600">Versi?n</h3>
+                    <p class="text-gray-600 text-sm">Template base</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="text-center">
+                <p class="text-gray-600">
+                    ? <strong>App Base Coolify</strong> - Template optimizado para VPS deployment
+                </p>
+                <p class="text-gray-500 text-sm mt-2">
+                    Creado por <strong>xuli70</strong> ? 
+                    <a href="https://github.com" class="text-blue-600 hover:underline">GitHub</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
