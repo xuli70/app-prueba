@@ -1,6 +1,6 @@
 # =================================
 # DOCKERFILE ULTRA-SIMPLE PARA COOLIFY
-# Template HTML Est?tico - CORREGIDO
+# Template HTML Est?tico - SIMPLIFICADO
 # =================================
 
 FROM node:18-alpine
@@ -8,7 +8,7 @@ FROM node:18-alpine
 # Informaci?n del maintainer
 LABEL maintainer="xuli70"
 LABEL description="Aplicaci?n de prueba para verificar que todo funciona"
-LABEL version="1.0.1"
+LABEL version="1.0.2"
 
 # Establecer directorio de trabajo
 WORKDIR /app
@@ -19,63 +19,12 @@ RUN apk add --no-cache caddy
 # Copiar todos los archivos de la aplicaci?n
 COPY . .
 
-# Crear Caddyfile optimizado para Coolify - SIN CONFLICTOS DE HEADERS
+# Crear Caddyfile ULTRA-SIMPLE para Coolify (SIN HEADERS COMPLEJOS)
 RUN echo -e ":${PORT:-8080} {\n\
-    # Directorio ra?z\n\
     root * /app\n\
-    \n\
-    # Servidor de archivos est?ticos\n\
     file_server\n\
-    \n\
-    # SPA fallback (redirige todo a index.html)\n\
     try_files {path} /index.html\n\
-    \n\
-    # Compresi?n autom?tica\n\
     encode gzip\n\
-    \n\
-    # Headers unificados (seguridad + CORS)\n\
-    header / {\n\
-        # Prevenir clickjacking\n\
-        X-Frame-Options \"DENY\"\n\
-        \n\
-        # Prevenir MIME sniffing\n\
-        X-Content-Type-Options \"nosniff\"\n\
-        \n\
-        # Protecci?n XSS\n\
-        X-XSS-Protection \"1; mode=block\"\n\
-        \n\
-        # Pol?tica de referrer\n\
-        Referrer-Policy \"strict-origin-when-cross-origin\"\n\
-        \n\
-        # Content Security Policy b?sica\n\
-        Content-Security-Policy \"default-src 'self' 'unsafe-inline' 'unsafe-eval' https: data: blob:; font-src 'self' https: data:; img-src 'self' https: data: blob:;\"\n\
-        \n\
-        # Headers CORS para desarrollo\n\
-        Access-Control-Allow-Origin \"*\"\n\
-        Access-Control-Allow-Methods \"GET, POST, OPTIONS\"\n\
-        Access-Control-Allow-Headers \"Content-Type\"\n\
-    }\n\
-    \n\
-    # Cache para assets est?ticos\n\
-    header /assets/* {\n\
-        Cache-Control \"public, max-age=31536000, immutable\"\n\
-    }\n\
-    \n\
-    # Cache para CSS y JS\n\
-    header *.css {\n\
-        Cache-Control \"public, max-age=86400\"\n\
-    }\n\
-    \n\
-    header *.js {\n\
-        Cache-Control \"public, max-age=86400\"\n\
-    }\n\
-    \n\
-    # Cache para im?genes\n\
-    header *.{png,jpg,jpeg,gif,ico,svg,webp} {\n\
-        Cache-Control \"public, max-age=604800\"\n\
-    }\n\
-    \n\
-    # Log de acceso (opcional, para debugging)\n\
     log {\n\
         output stdout\n\
         format console\n\
@@ -94,7 +43,9 @@ CMD ["caddy", "run", "--config", "/app/Caddyfile", "--adapter", "caddyfile"]
 
 # =================================
 # CHANGELOG:
-# v1.0.1 - CORREGIDO: Eliminado conflicto de headers duplicados
-# - Unificado header / para seguridad y CORS
-# - Eliminado segundo bloque header / que causaba error
+# v1.0.2 - SIMPLIFICADO: Eliminados TODOS los headers complejos
+# - Solo configuraci?n b?sica: root, file_server, try_files, gzip, log
+# - Sin headers de seguridad (Coolify los maneja)
+# - Sin cache headers (innecesarios para prueba)
+# - M?xima compatibilidad con Caddy
 # =================================
